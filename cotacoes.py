@@ -41,6 +41,7 @@ for empresa in empresas['Empresas']:
     print("ultimo for ", empresa)
     cota_final = cota_final.append(pd.read_excel(f"Cotacoes_{empresa}.xlsx"))
     display(cota_final)
-cota_final = cota_final.rename(index={0: 'Date'}, inplace=True)
+high = ['High']
+cota_final = cota_final.drop(cota_final[cota_final['High'].isin(high)].index)
 cota_final.to_excel(f'Cotacoes_final.xlsx',
                     sheet_name='Acoes', header=True, index=False)
