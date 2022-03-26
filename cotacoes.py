@@ -35,23 +35,12 @@ for empresa in empresas['Empresas']:
     nova_cota = cota.assign(Nome=empresa)
     # display(nova_cota)
     nova_cota.to_excel(f'Cotacoes_{empresa}.xlsx',
-                       sheet_name='Acoes', header=True, index=True)
-cota_a = 0
-cota_b = 0
-i = 0
+                       sheet_name='Acoes', header=True, index=False)
+cota_final = pd.DataFrame()
 for empresa in empresas['Empresas']:
-    print(empresa)
-    cota_a += 1
-    cota_a = pd.read_excel(f"Cotacoes_{empresa}.xlsx")
-    cota_b = cota_a
-
-    if i == 0:
-        resultado = cota_a
-    if empresa == 'BBAS3':
-        i = cota_a[cota_a.columns[0]].count()
-    else:
-        resultado = cota_a.append(cota_b)
-
-
-resultado.to_excel(f'Cotacoes_final.xlsx',
-                   sheet_name='Acoes', header=True, index=True)
+    print("ultimo for ", empresa)
+    cota_final = cota_final.append(pd.read_excel(f"Cotacoes_{empresa}.xlsx"))
+    display(cota_final)
+cota_final = cota_final.rename(index={0: 'Date'}, inplace=True)
+cota_final.to_excel(f'Cotacoes_final.xlsx',
+                    sheet_name='Acoes', header=True, index=False)
