@@ -33,4 +33,12 @@ for arquivo in arquivos:
         # display(dre)
         # criando dicionario de cada empresa colocando balanco e dre
         fundamentos[nome] = balanco.append(dre)
-        print(len(fundamentos))
+# print(len(fundamentos))
+
+cotacoes_df = pd.read_excel("Cotacoes_final.xlsx")
+cotacoes = {}
+# laço para para pegar a coluna de empresa na tabela
+for empresa in cotacoes_df['Nome'].unique():
+    # criando dicionario com chave o nome da empresa e a tabela as cotações
+    cotacoes[empresa] = cotacoes_df.loc[cotacoes_df['Nome'] == empresa, :]
+display(cotacoes["BBAS3"])
