@@ -1,4 +1,3 @@
-from IPython.display import display
 from pandas_datareader import data as web
 import pandas as pd
 import matplotlib.pyplot as plt
