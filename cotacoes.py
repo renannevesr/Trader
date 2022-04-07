@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 66f528eea6595ae87d3dd96299a012019979639e
 from pandas_datareader import data as web
 import pandas as pd
 import matplotlib.pyplot as plt
